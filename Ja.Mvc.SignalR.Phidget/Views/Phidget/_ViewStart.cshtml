@@ -1,0 +1,180 @@
+﻿<script type="text/javascript">
+    // Get PhidgetClient IP.
+    function PhidgetClientIP() {
+        return '@Request.ServerVariables["REMOTE_ADDR"]';
+        @*return '@Request.ServerVariables["HTTP_CF_CONNECTING_IP"]';*@
+    }
+    // Get PhidgetClient MachineName.
+    function PhidgetClientMachineName() {
+        return '@Request.ServerVariables["REMOTE_HOST"]';
+    }
+    // Get IIS application virtual path for js.
+    function AppPath() {
+        var a = '@HttpContext.Current.Request.ApplicationPath';
+        if (a == '/') {
+            appPath = '';
+        }
+        else {
+            appPath = a;
+        }
+        return appPath;
+    }
+
+</script>
+<script id="new-addphidgetserver-template" type="text/x-jquery-tmpl">
+    <p id="${connectionId}" class="${theClass}" style="{{html theStyle}}" title="${theTitle}"><img class="img-circle" style="float: left; padding-right:5px" height="35" width="35" src="${imagePath}" />${machineName}(${phidgetModuleTypeAttached})</p>
+    <input type="hidden" id="MachineName" value="${machineName}" />
+    <input type="hidden" id="PhidgetModuleTypeAttached-${connectionId}" value="${phidgetModuleTypeAttached}" />
+</script>
+<script id="new-PhidgetCommon-template" type="text/x-jquery-tmpl">
+    <dl>
+        <dt>Common properties For all Phidgets modules</dt>
+        <dd>Attached: <span id="Attached" class="badge alert-info"></span></dd>
+        <dd>Name: <span id="Name" class="badge alert-info"></span></dd>
+        <dd>ID: <span id="ID" class="badge alert-info"></span></dd>
+        <dd>Class: <span id="Class" class="badge alert-info"></span></dd>
+        <dd>SerialNumber: <span id="SerialNumber" class="badge alert-info"></span></dd>
+        <dd>Version: <span id="Version" class="badge alert-info"></span></dd>
+    </dl>
+</script>
+<script id="new-PhidgetRFID-template" type="text/x-jquery-tmpl">
+    <dl>
+        <dt>Specific properties For RFID</dt>
+        <dd>Outputs No: <span id="Outputs" class="badge alert-info"></span></dd>
+
+        <dd>Antenna: <span id="Antenna" class="badge"></span></dd>
+        <dd>Led: <span id="LED" class="badge"></span></dd>
+        <dd>KeyBoardOutPutEnable: <span id="KeyBoardOutPutEnable" class="badge"></span></dd>
+        <dd>DigitalOutPuts0: <span id="DigitalOutPuts0" class="badge"></span></dd>
+        <dd>DigitalOutPuts1: <span id="DigitalOutPuts1" class="badge"></span></dd>
+        <dd>Tag: <span id="Tag" class="badge"></span></dd>
+        <dd>Protocol:  <span id="Protocol" class="badge"></span></dd>
+        <dd>LastTag: <span id="LastTag" class="badge"></span></dd>
+        <dd>LastTagProtocol:  <span id="LastTagProtocol" class="badge"></span></dd>
+    </dl>
+    <button id="buttonToggleLED" type="button" class="btn btn-default">Toggle LED</button>
+    <button id="buttonToggleAntenna" type="button" class="btn btn-default">Toggle Antenna</button>
+    <button id="buttonToggleDigitalOutPuts0" type="button" class="btn btn-default">Toggle DigitalOutPuts 0</button>
+    <button id="buttonToggleDigitalOutPuts1" type="button" class="btn btn-default">Toggle DigitalOutPuts 1</button>
+</script>
+<script id="new-PhidgetServo-template" type="text/x-jquery-tmpl">
+    <dl>
+        <dt>Specific properties For Servo</dt>
+        <dd>Count: <span id="Count" class="badge alert-info"></span></dd>
+
+        <dd>ServoNumber: <span id="ServoNumber" class="badge alert-success"></span></dd>
+        <dd>Type: <span id="Type" class="badge alert-success"></span></dd>
+        <dd>PositionMin: <span id="PositionMin" class="badge alert-success"></span></dd>
+        <dd>PositionMax: <span id="PositionMax" class="badge alert-success"></span></dd>
+        <dd>
+            Position:
+            <div class="progress">
+                <div id="progressPosition" class="progress-bar" role="progressbar" aria-valuenow="0"
+                     aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    <span id="Position" class="badge"></span>
+                </div>
+            </div>
+            <div>
+                <input id="dialservo" data-angleoffset=-90 data-anglearc=180 data-fgcolor="#66EE66" data-rotation="clockwise" value="0">
+            </div>
+        </dd>
+        @*<dd>Degrees: <span id="Degrees" class="badge"></span></dd>
+            <dd>MinimumPulseWidth: <span id="MinimumPulseWidth" class="badge"></span></dd>
+            <dd>MaximumPulseWidth: <span id="MaximumPulseWidth" class="badge"></span></dd>*@
+        <dd>Engaged: <span id="Engaged" class="badge"></span></dd>
+    </dl>
+    <button id="buttonServoPositionMin" type="button" class="btn btn-default">PositionMin</button>
+    <button id="buttonServoLess" type="button" class="btn btn-default">Less</button>
+    <button id="buttonServoPlus" type="button" class="btn btn-default">Plus</button>
+    <button id="buttonServoPositionMax" type="button" class="btn btn-default">PositionMax</button>
+    <button id="buttonEngaged" type="button" class="btn btn-default">Engaged</button>
+</script>
+<script id="new-PhidgetStarterKit-template" type="text/x-jquery-tmpl">
+    <dl>
+        <dt>Specific properties For Starter kit</dt>
+        <dd>DigitalInputs: <span id="DigitalInputs" class="badge alert-info"></span></dd>
+        <dd>DigitalOutputs: <span id="DigitalOutputs" class="badge alert-info"></span></dd>
+        <dd>AnalogInputs: <span id="AnalogInputs" class="badge alert-info"></span></dd>
+
+        <dd>Ratiometric: <span id="Ratiometric" class="badge"></span></dd>
+        <dd>
+            AnalogInput0 (Slider):
+            <div class="progress">
+                <div id="progressAnalogInput0" class="progress-bar" role="progressbar" aria-valuenow="0"
+                     aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    <span id="AnalogInput0" class="badge"></span>
+                </div>
+            </div>
+        </dd>
+
+        <dd>
+            AnalogInput1 (Rotation):
+            <div class="progress">
+                <div id="progressAnalogInput1" class="progress-bar" role="progressbar" aria-valuenow="0"
+                     aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    <span id="AnalogInput1" class="badge"></span>
+                </div>
+            </div>
+            <div>
+                <input id="dialrotation" data-angleoffset=-0 data-anglearc=360 data-fgcolor="#66EE66" data-rotation="anticlockwise" value="0">
+            </div>
+
+        </dd>
+        <dd>
+            AnalogInput2 (Touch):
+            <div class="progress">
+                <div id="progressAnalogInput2" class="progress-bar" role="progressbar" aria-valuenow="0"
+                     aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    <span id="AnalogInput2" class="badge"></span>
+                </div>
+            </div>
+        </dd>
+        <dd>
+            AnalogInput3 (Force):
+            <div class="progress">
+                <div id="progressAnalogInput3" class="progress-bar" role="progressbar" aria-valuenow="0"
+                     aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    <span id="AnalogInput3" class="badge"></span>
+                </div>
+            </div>
+        </dd>
+        <dd>
+            AnalogInput4 (Light):
+            <div class="progress">
+                <div id="progressAnalogInput4" class="progress-bar" role="progressbar" aria-valuenow="0"
+                     aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    <span id="AnalogInput4" class="badge"></span>
+                </div>
+            </div>
+        </dd>
+        <dd>AnalogInput5 (NA): <span id="AnalogInput5" class="badge"></span></dd>
+        <dd>AnalogInput6 (NA): <span id="AnalogInput6" class="badge"></span></dd>
+        <dd>AnalogInput7 (NA): <span id="AnalogInput7" class="badge"></span></dd>
+        <dd>DigitalInput0: <span id="DigitalInput0" class="badge"></span></dd>
+        <dd>DigitalInput1: <span id="DigitalInput1" class="badge"></span></dd>
+        <dd>DigitalInput2: <span id="DigitalInput2" class="badge"></span></dd>
+        <dd>DigitalInput3: <span id="DigitalInput3" class="badge"></span></dd>
+        <dd>DigitalInput4: <span id="DigitalInput4" class="badge"></span></dd>
+        <dd>DigitalInput5: <span id="DigitalInput5" class="badge"></span></dd>
+        <dd>DigitalInput6: <span id="DigitalInput6" class="badge"></span></dd>
+        <dd>DigitalInput7: <span id="DigitalInput7" class="badge"></span></dd>
+        <dd>DigitalOutput0: <span id="DigitalOutput0" class="badge"></span></dd>
+        <dd>DigitalOutput1: <span id="DigitalOutput1" class="badge"></span></dd>
+        <dd>DigitalOutput2: <span id="DigitalOutput2" class="badge"></span></dd>
+        <dd>DigitalOutput3: <span id="DigitalOutput3" class="badge"></span></dd>
+        <dd>DigitalOutput4: <span id="DigitalOutput4" class="badge"></span></dd>
+        <dd>DigitalOutput5: <span id="DigitalOutput5" class="badge"></span></dd>
+        <dd>DigitalOutput6: <span id="DigitalOutput6" class="badge"></span></dd>
+        <dd>DigitalOutput7: <span id="DigitalOutput7" class="badge"></span></dd>
+    </dl>
+    <button id="buttonRatiometric" type="button" class="btn btn-default">Ratiometric</button>
+    <button id="buttonDigitalOutPut0" type="button" class="btn btn-default">Out 0</button>
+    <button id="buttonDigitalOutPut1" type="button" class="btn btn-default">Out 1</button>
+    <button id="buttonDigitalOutPut2" type="button" class="btn btn-default">Out 2</button>
+    <button id="buttonDigitalOutPut3" type="button" class="btn btn-default">Out 3</button>
+    <button id="buttonDigitalOutPut4" type="button" class="btn btn-default">Out 4</button>
+    <button id="buttonDigitalOutPut5" type="button" class="btn btn-default">Out 5</button>
+    <button id="buttonDigitalOutPut6" type="button" class="btn btn-default">Out 6</button>
+    <button id="buttonDigitalOutPut7" type="button" class="btn btn-default">Out 7</button>
+</script>
+

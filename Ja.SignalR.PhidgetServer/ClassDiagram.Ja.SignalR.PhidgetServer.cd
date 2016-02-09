@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Ja.SignalR.PhidgetServer.PhidgetServer">
+    <Position X="0.5" Y="0.5" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Ja.SignalR.PhidgetServer.PhidgetServer.PhidgetModule">
+        <Compartments>
+          <Compartment Name="Methods" Collapsed="true" />
+        </Compartments>
+        <TypeIdentifier>
+          <NewMemberFileName>PhidgetServer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAQAQAQgAgAAAEAEAIAAAAIAAAAIAAAAABGAAAAAQA=</HashCode>
+      <FileName>PhidgetServer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_hubConnection" />
+      <Field Name="_phidgetServerDetails" />
+      <Property Name="PhidgetServerHubProxy" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Ja.SignalR.Phidget.Models.SignalRClientType">
+    <Position X="12.75" Y="4" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Ja.SignalR.Phidget.Models.PhidgetModuleType">
+    <Position X="10.25" Y="4" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Ja.SignalR.Phidget.Models.PhidgetRFIDModule" Collapsed="true">
+    <Position X="6" Y="3" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Ja.SignalR.Phidget.Models.PhidgetServoModule" Collapsed="true">
+    <Position X="8.5" Y="3" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Ja.SignalR.Phidget.Models.PhidgetStarterKitModule" Collapsed="true">
+    <Position X="11" Y="3" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Ja.SignalR.Phidget.Models.SignalRClientDetails">
+    <Position X="6.75" Y="4" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Phidgets.InterfaceKit">
+    <Position X="4" Y="7.25" Width="3.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Phidgets.RFID">
+    <Position X="0.5" Y="7.25" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Phidgets.RFID.RFIDTagProtocol" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Phidgets.Servo">
+    <Position X="7.75" Y="7.25" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Phidgets.Phidget">
+    <Position X="11.5" Y="6" Width="4" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Phidgets.Phidget.LogLevel" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="Phidgets.Phidget.PhidgetClass" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="Phidgets.Phidget.PhidgetID" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.AspNet.SignalR.Client.HubConnection" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ja.SignalR.Phidget.Models.PhidgetModuleProperties" Collapsed="true">
+    <Position X="9" Y="1.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="Microsoft.AspNet.SignalR.Client.IHubProxy" Collapsed="true">
+    <Position X="6.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
