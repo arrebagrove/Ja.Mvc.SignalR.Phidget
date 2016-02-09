@@ -13,8 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Docs\-00- cdfCdc_WSPH2016 - V3.docx = Docs\-00- cdfCdc_WSPH2016 - V3.docx
 		Docs\Architecture.vsdx = Docs\Architecture.vsdx
 		Docs\CDF-Présentation Projet.pptx = Docs\CDF-Présentation Projet.pptx
-		ChangeLog.txt = ChangeLog.txt
+		ChangeLog.md = ChangeLog.md
+		ChangeLogForDev.md = ChangeLogForDev.md
 		Docs\Code.docx = Docs\Code.docx
+		ReadMe.md = ReadMe.md
 		Docs\Sequences.vsdx = Docs\Sequences.vsdx
 	EndProjectSection
 EndProject
